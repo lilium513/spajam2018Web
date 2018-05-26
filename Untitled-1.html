@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HOGEHOGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <script src="http://code.jquery.com/jquery-latest.min.js "></script>
+    <script src="jquery-3.3.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
+
+
+    <script> 
+            jQuery.getJSON("http://spajam2018-rails-server.herokuapp.com/api/v0/objective/1",function(data){
+                //  alert(data.content.title);
+                  $("#kikan").text(data.content.end);
+                  $("#title").text(data.content.title);
+                  $("#content").text(data.content.menu);
+
+               }); 
+               
+        
+        
+    
+                </script>
+   
+</head>
+
+<body>
+        
+    <h1 class="text-left" id="title"></h1>
+  
+
+                
+        <div id="container" class="col-sm-10" > 
+        </div>
+
+        <h1>目標</h1>
+                     <h1> <b><div class="text-center">進捗80%</div ></b></h1>
+
+       
+
+  
+    <script>
+
+      
+
+        var bar = new ProgressBar.Circle(container, {
+            color: '#FFEA82',
+            trailColor: '#eee',
+            trailWidth: 8,
+            duration: 1400,
+            easing: 'bounce',
+            strokeWidth: 12,
+            text: {
+                // Initial value for text.
+                // Default: null
+                value: 'Text'
+            },
+            from: { color: '#FFEA82', a: 0 },
+            to: { color: '#dc143c', a: 1 },
+            // Set default step function for all animate calls
+            step: function (state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+            }
+        });
+        bar.animate(80 / 100);  // Number from 0.0 to 1.0
+        
+    </script>
+
+    <div class="row row-center va-middle center-block">
+        <div class="col-sm-6">
+            <div class="alert alert-dark">
+                <div class="well well-sm">
+                    <h2>
+                        <b>期間</b>
+                        <br>
+                    </h2>
+                </div>
+                <h2>
+                    <div id="kikan"></div>
+                </h2>
+                <div>
+                    <h2>
+                        <b>内容</b>
+                    </h2>
+                </div>
+                <h2>
+                    <div id="content"></div>
+                </h2>
+
+            </div>
+        </div>
+        <div class="col-sm-6 ">
+            <button type="button" name="aaa" class="btn btn-danger" style="WIDTH:400px; HEIGHT:210px" id="button">
+            <img src="./p.png" width="25%" height="55%">
+                <h2><b>プロテインを寄付する</b></h2>            </button>
+        </div>
+    </div>
+  
+    <script>    $('#button').on("click",function(){
+            // alert("joge");
+             jQuery.get("http://spajam2018-rails-server.herokuapp.com/api/v0/protein/send/from/1/to/2");
+             });</script>
+             
+
+</body>
+
+</html>

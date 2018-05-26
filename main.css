@@ -1,0 +1,16 @@
+
+
+.row-center.va-middle > [class*='col-'] {
+    vertical-align:middle;
+    }
+    .row-center.va-bottom > [class*='col-'] {
+    vertical-align:bottom;
+    }
+    #container {
+        width: 400px;
+        height:400px;
+        margin: auto;
+    
+    
+    }
+    
